@@ -1,0 +1,11 @@
+extends layout
+
+block contenido
+    main 
+        h1.text-center= pagina
+        div.text-left
+            a.add-task(href="/") Return
+        form(action=`/edit/${task.id}` method="POST")
+            label(for="tarea") Edit your task
+            input.add(type="text" id="tarea" name="tarea" placeholder="Edit task" value=task.tarea)
+            input.addSubmit(type="submit" value="Edit") 

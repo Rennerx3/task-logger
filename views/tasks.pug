@@ -1,0 +1,22 @@
+extends layout
+
+block contenido
+    main 
+        h1.text-center= pagina
+        div.text-right
+            a.add-task(href="/add") Add Task
+        ul.divTask
+            if tasks.length === 0
+                li
+                    b.text-center You have no tasks to do
+            else
+                each task in tasks
+                    li(class= task.completado ? "completado" : '')
+                        a.numeroTarea(href=`/edit/${task.id}`) #{task.tarea}
+                        if task.completado
+                            a.desmarcar(href=`/uncomplete/${task.id}`) Uncomplete
+                        else 
+                            a.marcar(href=`/complete/${task.id}`) Complete
+                        a.eliminar(href=`/delete/${task.id}`) Remove    
+                         
+        
